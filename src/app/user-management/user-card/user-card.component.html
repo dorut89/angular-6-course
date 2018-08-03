@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-body" fxLayout="column" fxLayoutAlign="space-between center ">
+    <div style="width: 100%">
+      <h5 class="card-title">{{userName}}</h5>
+      <div class="card-text" fxLayout="column">
+        <h5>{{userEmail}}</h5>
+        <div class="description">{{userDescription}}</div>
+      </div>
+    </div>
+
+    <div fxLayout="row" class="action-rows" fxLayoutAlign="space-between center">
+      <a href="#" class="card-link" (click)="edit()">Edit</a>
+      <a href="#" class="card-link" (click)="remove()">Remove</a>
+    </div>
+
+  </div>
+</div>
