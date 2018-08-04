@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-user-card',
@@ -9,9 +9,14 @@ export class UserCardComponent {
 
   editState = false;
 
+  @Input()
   userName = 'User name';
+
+  @Input()
   userEmail = 'email@email.com';
   oldEmail = this.userEmail;
+
+  @Input()
   userDescription = 'default description sadaskjd lsakjd lakjdla sjkdlasjdlk asjldjasl jdlask default description sadaskjd lsakjd lakjdla sjkdlasjdlk asjldjasl jdlaskdefault description sadaskjd lsakjd lakjdla' +
     ' sjkdlasjdlk asjldjasl jdlask default description sadaskjd lsakjd lakjdla sjkdlasjdlk asjldjasl jdlask';
 
