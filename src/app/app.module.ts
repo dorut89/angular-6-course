@@ -6,12 +6,14 @@ import {UserAdministrationComponent} from './user-management/user-administration
 import {FlexModule} from '@angular/flex-layout';
 import {UserCardComponent} from './user-management/user-card/user-card.component';
 import {FormsModule} from '@angular/forms';
+import {HoverDirective} from './common/directives/hover.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserAdministrationComponent,
-    UserCardComponent
+    UserCardComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
