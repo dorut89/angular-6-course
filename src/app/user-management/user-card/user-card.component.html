@@ -3,14 +3,30 @@
     <div style="width: 100%">
       <h5 class="card-title">{{userName}}</h5>
       <div class="card-text" fxLayout="column">
-        <h5>{{userEmail}}</h5>
+
+        <div class="form-group" *ngIf="editState">
+          <label for="email">Email address <span style="font-size: 0.8em">({{userEmail}})</span></label>
+          <input
+            #inputEmailReference
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter email"
+            [value]="userEmail"
+            (change)="updateEmail(inputEmailReference.value)">
+        </div>
+        <div *ngIf="!editState">
+          <h5>{{userEmail}}</h5>
+        </div>
         <div class="description">{{userDescription}}</div>
       </div>
     </div>
 
     <div fxLayout="row" class="action-rows" fxLayoutAlign="space-between center">
-      <a href="#" class="card-link" (click)="edit()">Edit</a>
-      <a href="#" class="card-link" (click)="remove()">Remove</a>
+      <a href="#" class="card-link" (click)="edit()" *ngIf="!editState">Edit</a>
+      <a href="#" class="card-link" (click)="cancelEdit()" *ngIf="editState">Cancel</a>
+      <a href="#" class="card-link" (click)="save()" *ngIf="editState">Save</a>
+      <a href="#" class="card-link" (click)="remove()" *ngIf="!editState">Remove</a>
     </div>
 
   </div>
