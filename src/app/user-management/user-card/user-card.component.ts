@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-user-card',
@@ -20,6 +20,10 @@ export class UserCardComponent {
   userDescription = 'default description sadaskjd lsakjd lakjdla sjkdlasjdlk asjldjasl jdlask default description sadaskjd lsakjd lakjdla sjkdlasjdlk asjldjasl jdlaskdefault description sadaskjd lsakjd lakjdla' +
     ' sjkdlasjdlk asjldjasl jdlask default description sadaskjd lsakjd lakjdla sjkdlasjdlk asjldjasl jdlask';
 
+  @Output()
+  emailUpdated: EventEmitter<string> = new EventEmitter();
+
+
   edit(): void {
     this.editState = true;
   }
@@ -30,11 +34,13 @@ export class UserCardComponent {
 
   updateEmail(newEmail: string): void {
     this.userEmail = newEmail;
+    this.emailUpdated.emit(this.userEmail);
   }
 
   cancelEdit(): void {
     this.editState = false;
     this.userEmail = this.oldEmail;
+    this.emailUpdated.emit(this.oldEmail);
   }
 
   remove(): void {

@@ -10,6 +10,10 @@ export class UserAdministrationComponent {
 
   userList: Array<User> = listOfUsers;
 
+  userEmailChanged(user: User, newEmail: string) {
+    user.userEmail = newEmail;
+  }
+
 }
 
 
