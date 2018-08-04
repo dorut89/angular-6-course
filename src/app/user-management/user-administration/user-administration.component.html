@@ -19,7 +19,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="card-container">
 
   <div *ngFor="let user of userList">
-    <app-user-card [userName]="user.userName" [userDescription]="user.userDescription" [userEmail]="user.userEmail" (emailUpdated)="userEmailChanged(user,$event)"></app-user-card>
+    <app-user-card [user]="user"></app-user-card>
   </div>
 
 </div>

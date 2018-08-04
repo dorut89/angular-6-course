@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {UserAdministrationComponent} from './user-management/user-administration/user-administration.component';
 import {FlexModule} from '@angular/flex-layout';
 import {UserCardComponent} from './user-management/user-card/user-card.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {UserCardComponent} from './user-management/user-card/user-card.component
   ],
   imports: [
     BrowserModule,
-    FlexModule
+    FlexModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

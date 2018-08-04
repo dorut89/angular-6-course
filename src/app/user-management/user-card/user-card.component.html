@@ -1,24 +1,23 @@
 <div class="card">
   <div class="card-body" fxLayout="column" fxLayoutAlign="space-between center ">
     <div style="width: 100%">
-      <h5 class="card-title">{{userName}}</h5>
+      <h5 class="card-title">{{user.userName}}</h5>
       <div class="card-text" fxLayout="column">
 
         <div class="form-group" *ngIf="editState">
-          <label for="email">Email address <span style="font-size: 0.8em">({{userEmail}})</span></label>
+          <label for="email">Email address <span style="font-size: 0.8em">({{user.userEmail}})</span></label>
           <input
             #inputEmailReference
             type="email"
             class="form-control"
             id="email"
             placeholder="Enter email"
-            [value]="userEmail"
-            (change)="updateEmail(inputEmailReference.value)">
+            [(ngModel)]="user.userEmail">
         </div>
         <div *ngIf="!editState">
-          <h5>{{userEmail}}</h5>
+          <h5>{{user.userEmail}}</h5>
         </div>
-        <div class="description">{{userDescription}}</div>
+        <div class="description">{{user.userDescription}}</div>
       </div>
     </div>
 
