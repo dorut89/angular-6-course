@@ -1,25 +1,29 @@
-<div fxLayout="column" fxLayoutAlign="center center" style="padding-top: 20px;padding-bottom: 20px">
-  <div class="card" style="width: 500px;padding: 5px" appHover>
+<div *ngIf="userList">
+  <div fxLayout="column" fxLayoutAlign="center center" style="padding-top: 20px;padding-bottom: 20px">
+    <div class="card" style="width: 500px;padding: 5px" appHover>
 
-    <div style="width: 100%" fxLayoutAlign="center center">
-      <h4>User administration (Parent Component) : </h4>
-    </div>
+      <div style="width: 100%" fxLayoutAlign="center center">
+        <h4>User administration (Parent Component) : </h4>
+      </div>
 
-    <div fxLayout="row"
-         *ngFor="let user of userList; let i = index"
-         fxLayoutAlign="center center"
-         style="width: 100%"
-         [ngClass]="{'odd':i%2!==0,'even':i%2===0,'both':true}">
-      <div>Name : {{user.userName}}</div>
-      <div>Email : {{user.userEmail}}</div>
+      <div fxLayout="row"
+           *ngFor="let user of userList ; let i = index"
+           fxLayoutAlign="center center"
+           style="width: 100%"
+           [ngClass]="{'odd':i%2!==0,'even':i%2===0,'both':true}">
+        <div>Name : {{user.userName}}</div>
+        <div>Email : {{user.userEmail}}</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div fxLayout="row" fxLayoutAlign="center center" class="card-container">
+  <div fxLayout="row" fxLayoutAlign="center center" class="card-container">
 
-  <div *ngFor="let user of userList">
-    <app-user-card [user]="user"></app-user-card>
+    <div *ngFor="let user of userList">
+      <app-user-card [user]="user"></app-user-card>
+    </div>
+
   </div>
 
 </div>
+

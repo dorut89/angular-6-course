@@ -7,6 +7,8 @@ import {FlexModule} from '@angular/flex-layout';
 import {UserCardComponent} from './user-management/user-card/user-card.component';
 import {FormsModule} from '@angular/forms';
 import {HoverDirective} from './common/directives/hover.directive';
+import {UserService} from './user-management/service/user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import {HoverDirective} from './common/directives/hover.directive';
   imports: [
     BrowserModule,
     FlexModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

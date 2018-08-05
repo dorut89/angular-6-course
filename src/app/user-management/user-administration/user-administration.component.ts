@@ -1,19 +1,28 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {User} from '../model/user.model';
-import {UserRepository} from '../service/user.repository';
+import {Observable, Subscription} from 'rxjs';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-user-creation',
   templateUrl: 'user-administration.component.html',
   styleUrls: ['user-administration.component.scss']
 })
-export class UserAdministrationComponent {
+export class UserAdministrationComponent implements OnDestroy {
 
-  userList: Array<User> = UserRepository.listOfUsers;
+  userListSubscription: Subscription;
+  userList: Array<User>;
 
-  userEmailChanged(user: User, newEmail: string) {
-    user.userEmail = newEmail;
+  constructor(private userService: UserService) {
+    this.userListSubscription = this.userService.getAllUsers().subscribe(value => {
+      this.userList = value;
+    });
   }
+
+  ngOnDestroy(): void {
+    this.userListSubscription.unsubscribe();
+  }
+
 
 }
 
