@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {User} from '../model/user.model';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {UserService} from '../service/user.service';
 
 @Component({
@@ -11,16 +11,32 @@ import {UserService} from '../service/user.service';
 export class UserAdministrationComponent implements OnDestroy {
 
   userListSubscription: Subscription;
+  userUpdateSubscription: Subscription;
   userList: Array<User>;
 
   constructor(private userService: UserService) {
-    this.userListSubscription = this.userService.getAllUsers().subscribe(value => {
-      this.userList = value;
-    });
+    this.userListSubscription = this.userService.getAllUsers()
+      .subscribe(value => {
+        this.userList = value;
+      });
+  }
+
+  userChanged(user: User) {
+    this.userListSubscription.unsubscribe();
+    if (this.userUpdateSubscription) {
+      this.userUpdateSubscription.unsubscribe();
+    }
+    this.userUpdateSubscription = this.userService.updateUser(user)
+      .subscribe(value => {
+        this.userListSubscription = this.userService.getAllUsers().subscribe(allUsers => {
+          this.userList = allUsers;
+        });
+      });
   }
 
   ngOnDestroy(): void {
     this.userListSubscription.unsubscribe();
+    this.userUpdateSubscription.unsubscribe();
   }
 
 

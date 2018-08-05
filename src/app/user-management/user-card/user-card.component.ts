@@ -13,6 +13,10 @@ export class UserCardComponent implements OnInit {
   @Input()
   user: User;
 
+  @Output()
+  userChanged: EventEmitter<User> = new EventEmitter();
+
+
   oldEmail;
 
   edit(): void {
@@ -21,6 +25,7 @@ export class UserCardComponent implements OnInit {
 
   save(): void {
     this.editState = false;
+    this.userChanged.emit(this.user);
   }
 
   updateEmail(newEmail: string): void {
