@@ -1,29 +1,55 @@
-<div *ngIf="userList">
-  <div fxLayout="column" fxLayoutAlign="center center" style="padding-top: 20px;padding-bottom: 20px">
-    <div class="card" style="width: 500px;padding: 5px" appHover>
-
-      <div style="width: 100%" fxLayoutAlign="center center">
-        <h4>User administration (Parent Component) : </h4>
-      </div>
-
-      <div fxLayout="row"
-           *ngFor="let user of userList ; let i = index"
-           fxLayoutAlign="center center"
-           style="width: 100%"
-           [ngClass]="{'odd':i%2!==0,'even':i%2===0,'both':true}">
-        <div>Name : {{user.userName}}</div>
-        <div>Email : {{user.userEmail}}</div>
-      </div>
-    </div>
+<div *ngIf="errorState" fxLayout="column" style="width: 100%" fxLayoutAlign="center center">
+  <div>
+    <h2> Could not load data </h2>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="center center" class="card-container">
-
-    <div *ngFor="let user of userList">
-      <app-user-card [user]="user" (userChanged)="userChanged($event)"></app-user-card>
-    </div>
-
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <h3>Message : </h3> <span style="margin-left: 10px;">{{errorMessage}}</span>
   </div>
-
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button class="btn-primary" (click)="retry()">Retry ?</button>
+  </div>
 </div>
 
+<div *ngIf="!errorState">
+  <div *ngIf="!userList">
+    <div fxLayout="row" style="width: 100%" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <h3>Load all users</h3>
+    </div>
+    <div fxLayout="row" style="width: 100%" fxLayoutAlign="center center">
+      <h2>Counter : {{counter}}</h2>
+    </div>
+
+  </div>
+
+  <div *ngIf="userList">
+    <div fxLayout="column" fxLayoutAlign="center center" style="padding-top: 20px;padding-bottom: 20px">
+      <div class="card" style="width: 500px;padding: 5px" appHover>
+
+        <div style="width: 100%" fxLayoutAlign="center center">
+          <h4>User administration (Parent Component) : </h4>
+        </div>
+
+        <div fxLayout="row"
+             *ngFor="let user of userList ; let i = index"
+             fxLayoutAlign="center center"
+             style="width: 100%"
+             [ngClass]="{'odd':i%2!==0,'even':i%2===0,'both':true}">
+          <div>Name : {{user.userName}}</div>
+          <div>Email : {{user.userEmail}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="card-container">
+
+      <div *ngFor="let user of userList">
+        <app-user-card [user]="user" (userChanged)="userChanged($event)"></app-user-card>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
