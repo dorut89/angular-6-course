@@ -8,7 +8,6 @@ import {UserService} from './user-management/service/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './common/home/home.component';
 import {AppRoutingModule} from './app-routing.module';
-import {UserManagementModule} from './user-management/user-management.module';
 import {SharedModule} from './common/shared.module';
 
 @NgModule({
@@ -22,7 +21,6 @@ import {SharedModule} from './common/shared.module';
     FormsModule,
     HttpClientModule,
     SharedModule,
-    UserManagementModule,
     AppRoutingModule
   ],
   providers: [UserService],

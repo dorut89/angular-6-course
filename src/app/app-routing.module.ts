@@ -7,10 +7,12 @@ export const appRootRoutes: Routes = [
     path: 'home',
     component: HomeComponent
   }, {
+    path: 'user-administration',
+    loadChildren: './user-management/user-management.module#UserManagementModule'
+  }, {
     path: '**',
     component: HomeComponent
-  }
-];
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRootRoutes)],
