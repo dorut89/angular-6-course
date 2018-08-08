@@ -22,10 +22,8 @@
     </div>
 
     <div fxLayout="row" class="action-rows" fxLayoutAlign="space-between center">
-      <a href="#" class="card-link" (click)="edit()" *ngIf="!editState">Edit</a>
-      <a href="#" class="card-link" (click)="cancelEdit()" *ngIf="editState">Cancel</a>
-      <a href="#" class="card-link" (click)="save()" *ngIf="editState">Save</a>
-      <a href="#" class="card-link" (click)="remove()" *ngIf="!editState">Remove</a>
+      <button class="btn btn-link">Edit</button>
+      <button class="btn btn-link">Remove</button>
     </div>
 
   </div>

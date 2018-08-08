@@ -32,7 +32,6 @@ export class UserService {
     return this.httpClient.get<Array<User>>(this.hostUrl).pipe(map(value => {
       const updatedArray: Array<User> = [];
       value.forEach(item => {
-        console.log(item);
         updatedArray.push(new User(item));
       });
       return updatedArray;
