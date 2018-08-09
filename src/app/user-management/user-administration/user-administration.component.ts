@@ -2,6 +2,7 @@ import {Component, OnDestroy} from '@angular/core';
 import {User} from '../model/user.model';
 import {Subscription} from 'rxjs';
 import {UserService} from '../service/user.service';
+import {UserAuthenticationService} from '../../common/user-authentication.service';
 
 @Component({
   selector: 'app-user-creation',
@@ -13,9 +14,10 @@ export class UserAdministrationComponent implements OnDestroy {
   userListSubscription: Subscription;
   userList: Array<User>;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private userAuthenticationService: UserAuthenticationService) {
     this.userListSubscription = this.userService.listOfAllUsersSubject$.subscribe(
       value => {
+        console.log(userAuthenticationService.getActive());
         this.userList = value;
       }, error => {
       });

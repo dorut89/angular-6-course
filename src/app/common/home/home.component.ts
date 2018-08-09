@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {UserAuthenticationService} from '../user-authentication.service';
 
 @Component({
   selector: 'app-home-component',
@@ -6,5 +7,12 @@ import {Component} from '@angular/core';
   styleUrls: ['home.component.scss']
 })
 export class HomeComponent {
+
+  constructor(private userAUthSer: UserAuthenticationService) {
+
+  }
+  setActive() {
+    this.userAUthSer.setActive(true);
+  }
 
 }
